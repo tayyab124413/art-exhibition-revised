@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About My Art Exhibition – our mission, history, vision and team.">
+    <title>About Us – My Art Exhibition</title>
+    <link rel="stylesheet" href="../cssFile/globalStyles.css">
+</head>
+<body>
+
+    <nav>
+        <a href="home.html" class="nav-brand">🎨 My Art <span>Exhibition</span></a>
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
+        <ul id="nav-menu">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="exhibits.html">Gallery</a></li>
+            <li><a href="artists.html">Artists</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="cart.html">🛒 Cart <span class="cart-count" id="cart-count">0</span></a></li>
+            <li class="dropdown">
+                <a href="#">Account ▾</a>
+                <div class="dropdown-menu">
+                    <a href="login.html">🔑 Login</a>
+                    <a href="signup.html">✨ Register</a>
+                </div>
+            </li>
+            <li><button id="dark-mode-toggle" class="nav-btn-login" style="font-size:1.1rem;padding:7px 12px;" title="Toggle dark mode">🌙</button></li>
+        </ul>
+    </nav>
+
+    <div class="page fade-in">
+        <div class="hero-section">
+            <div class="hero-badge">✦ Our Story</div>
+            <h1>About Our <span>Exhibition</span></h1>
+            <p>Preserving history, fostering creativity, and building an inclusive artistic community since 2026.</p>
+        </div>
+
+        <h2 class="section-title">Who We Are</h2>
+        <div class="card-container fade-in-2">
+            <div class="card">
+                <div style="padding:32px 24px 8px;font-size:2.5rem;text-align:center;">🎯</div>
+                <h3 style="text-align:center;padding:0 18px;">Our Mission</h3>
+                <p style="padding:8px 18px 24px;text-align:center;">To provide an inspiring environment where individuals from all walks of life can appreciate, learn about, and connect through the power of fine art.</p>
+            </div>
+            <div class="card">
+                <div style="padding:32px 24px 8px;font-size:2.5rem;text-align:center;">📜</div>
+                <h3 style="text-align:center;padding:0 18px;">Our History</h3>
+                <p style="padding:8px 18px 24px;text-align:center;">Founded in 2026, we've curated a global collection of classical and modern masterpieces, partnering with over 48 artists across 22 countries.</p>
+            </div>
+            <div class="card">
+                <div style="padding:32px 24px 8px;font-size:2.5rem;text-align:center;">🔭</div>
+                <h3 style="text-align:center;padding:0 18px;">Our Vision</h3>
+                <p style="padding:8px 18px 24px;text-align:center;">To become a global hub of cultural expression and modern inspiration for future generations of artists, collectors, and art enthusiasts worldwide.</p>
+            </div>
+        </div>
+
+        <hr class="divider">
+        <h2 class="section-title fade-in-3">The Team Behind the Art</h2>
+        <div class="card-container">
+            <div class="card fade-in">
+                <img src="../sources/image1.png" alt="Alexandra Mills – Chief Curator">
+                <h3>Alexandra Mills</h3>
+                <p><strong style="color:var(--brand-accent);">Chief Curator</strong></p>
+                <p>15 years of experience curating international exhibitions and discovering emerging talent.</p>
+                <a href="contact.html">Get in Touch →</a>
+            </div>
+            <div class="card fade-in-2">
+                <img src="../sources/image2.png" alt="Marcus Reyes – Gallery Director">
+                <h3>Marcus Reyes</h3>
+                <p><strong style="color:var(--brand-accent);">Gallery Director</strong></p>
+                <p>Oversees operations and builds partnerships with museums and galleries worldwide.</p>
+                <a href="contact.html">Get in Touch →</a>
+            </div>
+            <div class="card fade-in-3">
+                <img src="../sources/exhibit_hall.png" alt="Priya Nair – Creative Director">
+                <h3>Priya Nair</h3>
+                <p><strong style="color:var(--brand-accent);">Creative Director</strong></p>
+                <p>Responsible for the aesthetic identity and spatial design of all our exhibitions.</p>
+                <a href="contact.html">Get in Touch →</a>
+            </div>
+        </div>
+
+        <div class="text-center mt-20">
+            <button class="lg-button accent-button" onclick="window.location.href='contact.html'">✉️ Contact Us</button>
+            <button class="lg-button border-button" onclick="window.location.href='exhibits.html'" style="margin-left:12px;">🖼️ View Gallery</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div>
+                <h2>🎨 My Art <span>Exhibition</span></h2>
+                <p>Connecting people through the universal language of art since 2026.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">f</a>
+                    <a href="#" class="social-link">𝕏</a>
+                    <a href="#" class="social-link">in</a>
+                    <a href="#" class="social-link">▶</a>
+                </div>
+            </div>
+            <div>
+                <h3>Explore</h3>
+                <a href="home.html">Home</a>
+                <a href="exhibits.html">Gallery</a>
+                <a href="artists.html">Artists</a>
+                <a href="about.html">About Us</a>
+            </div>
+            <div>
+                <h3>Account</h3>
+                <a href="login.html">Login</a>
+                <a href="signup.html">Register</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div>
+                <h3>Contact Info</h3>
+                <p>📍 123 Gallery Lane, Art City</p>
+                <p>✉️ info@myartexhibition.com</p>
+                <p>📞 +1 234 567 8900</p>
+            </div>
+        </div>
+        <hr class="footer-divider">
+        <div class="footer-bottom">
+            <span>© 2026 My Art Exhibition. All Rights Reserved.</span>
+            <span>Designed with ❤️ for art lovers</span>
+        </div>
+    </footer>
+
+    <div id="toast-notification" class="toast"></div>
+    <script src="../jsFile/jsFunctions.js"></script>
+</body>
+</html>

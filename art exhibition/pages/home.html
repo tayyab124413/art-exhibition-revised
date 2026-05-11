@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Home – My Art Exhibition. Explore our curated gallery, meet our artists, and immerse yourself in art.">
+    <title>Home – My Art Exhibition</title>
+    <link rel="stylesheet" href="../cssFile/globalStyles.css">
+</head>
+<body>
+
+    <nav>
+        <a href="home.html" class="nav-brand">🎨 My Art <span>Exhibition</span></a>
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
+        <ul id="nav-menu">
+            <li><a href="home.html" class="active">Home</a></li>
+            <li><a href="exhibits.html">Gallery</a></li>
+            <li><a href="artists.html">Artists</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="cart.html">🛒 Cart <span class="cart-count" id="cart-count">0</span></a></li>
+            <li class="dropdown">
+                <a href="#">Account ▾</a>
+                <div class="dropdown-menu">
+                    <a href="login.html">🔑 Login</a>
+                    <a href="signup.html">✨ Register</a>
+                </div>
+            </li>
+            <li><button id="dark-mode-toggle" class="nav-btn-login" style="font-size:1.1rem;padding:7px 12px;" title="Toggle dark mode">🌙</button></li>
+        </ul>
+    </nav>
+
+    <div class="page">
+        <div class="hero-section fade-in">
+            <button class="sm-button absolute-top-right" onclick="window.location.href='sitemap.html'">🗺 Site Map</button>
+            <div class="hero-badge">✦ Our Gallery is Open</div>
+            <h1>Welcome to Our <span>Gallery</span></h1>
+            <p>Experience the finest collections of timeless art pieces curated from across the globe. Every artwork tells a story.</p>
+            <div class="flex-center">
+                <button class="lg-button accent-button" onclick="window.location.href='exhibits.html'">Browse Gallery</button>
+                <button class="lg-button" onclick="window.location.href='artists.html'" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.3);">Meet Artists</button>
+            </div>
+        </div>
+
+        <div class="text-center mb-20">
+            <h2 class="section-title">Quick Navigation</h2>
+        </div>
+        <div class="action-grid fade-in-2">
+            <button class="action-btn" onclick="window.location.href='login.html'">
+                <div class="action-btn-icon">🔑</div>Login
+            </button>
+            <button class="action-btn" onclick="window.location.href='signup.html'">
+                <div class="action-btn-icon">✨</div>Register
+            </button>
+            <button class="action-btn" onclick="window.location.href='about.html'">
+                <div class="action-btn-icon">ℹ️</div>About Us
+            </button>
+            <button class="action-btn" onclick="window.location.href='contact.html'">
+                <div class="action-btn-icon">✉️</div>Contact
+            </button>
+            <button class="action-btn" onclick="window.location.href='exhibits.html'">
+                <div class="action-btn-icon">🖼️</div>Art Gallery
+            </button>
+            <button class="action-btn" onclick="window.location.href='artists.html'">
+                <div class="action-btn-icon">🎨</div>Artists
+            </button>
+            <button class="action-btn" onclick="window.location.href='dashboard.html'">
+                <div class="action-btn-icon">📊</div>Dashboard
+            </button>
+            <button class="action-btn" onclick="window.location.href='cart.html'">
+                <div class="action-btn-icon">🛒</div>My Cart
+            </button>
+        </div>
+
+        <hr class="divider">
+        <h2 class="section-title">Featured Highlights</h2>
+        <div class="card-container fade-in-3">
+            <div class="card">
+                <img src="../sources/image1.png" alt="Abstract Art">
+                <h3>Abstract Thoughts</h3>
+                <p>Dive into the colorful world of modern abstraction and color theory.</p>
+                <a href="exhibits.html">View Collection →</a>
+            </div>
+            <div class="card">
+                <img src="../sources/image2.png" alt="Classic Portrait">
+                <h3>Classic Masterpieces</h3>
+                <p>Historical portraits and paintings preserved with exceptional care.</p>
+                <a href="exhibits.html">View Collection →</a>
+            </div>
+            <div class="card">
+                <img src="../sources/exhibit_hall.png" alt="Exhibition Hall">
+                <h3>Grand Hall</h3>
+                <p>A tour of our main exhibition hall with stunning art installations.</p>
+                <a href="exhibits.html">View Collection →</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div>
+                <h2>🎨 My Art <span>Exhibition</span></h2>
+                <p>Connecting people through the universal language of art since 2026.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">f</a>
+                    <a href="#" class="social-link">𝕏</a>
+                    <a href="#" class="social-link">in</a>
+                    <a href="#" class="social-link">▶</a>
+                </div>
+            </div>
+            <div>
+                <h3>Explore</h3>
+                <a href="exhibits.html">Gallery</a>
+                <a href="artists.html">Artists</a>
+                <a href="about.html">About Us</a>
+                <a href="sitemap.html">Site Map</a>
+            </div>
+            <div>
+                <h3>Account</h3>
+                <a href="login.html">Login</a>
+                <a href="signup.html">Register</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div>
+                <h3>Contact Info</h3>
+                <p>📍 123 Gallery Lane, Art City</p>
+                <p>✉️ info@myartexhibition.com</p>
+                <p>📞 +1 234 567 8900</p>
+            </div>
+        </div>
+        <hr class="footer-divider">
+        <div class="footer-bottom">
+            <span>© 2026 My Art Exhibition. All Rights Reserved.</span>
+            <span>Designed with ❤️ for art lovers</span>
+        </div>
+    </footer>
+
+    <div id="toast-notification" class="toast"></div>
+    <script src="../jsFile/jsFunctions.js"></script>
+</body>
+</html>

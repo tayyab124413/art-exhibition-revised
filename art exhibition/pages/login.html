@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Login – My Art Exhibition. Sign in to access your account and admin dashboard.">
+    <title>Login – My Art Exhibition</title>
+    <link rel="stylesheet" href="../cssFile/globalStyles.css">
+</head>
+<body>
+
+    <nav>
+        <a href="home.html" class="nav-brand">🎨 My Art <span>Exhibition</span></a>
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
+        <ul id="nav-menu">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="exhibits.html">Gallery</a></li>
+            <li><a href="artists.html">Artists</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="cart.html">🛒 Cart <span class="cart-count" id="cart-count">0</span></a></li>
+            <li class="dropdown">
+                <a href="#" class="active">Account ▾</a>
+                <div class="dropdown-menu">
+                    <a href="login.html">🔑 Login</a>
+                    <a href="signup.html">✨ Register</a>
+                </div>
+            </li>
+            <li><button id="dark-mode-toggle" class="nav-btn-login" style="font-size:1.1rem;padding:7px 12px;" title="Toggle dark mode">🌙</button></li>
+        </ul>
+    </nav>
+
+    <div class="page fade-in" style="display:flex;align-items:center;justify-content:center;min-height:70vh;">
+        <div class="form-container fade-in" style="max-width:480px;width:100%;">
+            <div style="text-align:center;margin-bottom:28px;">
+                <div style="font-size:3rem;margin-bottom:12px;">🔑</div>
+                <h2 style="margin-bottom:6px;">Welcome Back</h2>
+                <p style="margin:0;">Sign in to access your account and the dashboard.</p>
+            </div>
+            <form id="login-form">
+                <div>
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="name@example.com" required>
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                </div>
+                <div style="flex-direction:row;justify-content:space-between;align-items:center;margin-bottom:24px;">
+                    <label style="display:flex;align-items:center;gap:8px;font-weight:400;cursor:pointer;">
+                        <input type="checkbox" id="remember-me" style="width:auto;padding:0;"> Remember me
+                    </label>
+                    <a href="#" class="link-button" style="font-size:0.88rem;">Forgot password?</a>
+                </div>
+                <button type="submit" class="lg-button accent-button" style="width:100%;">Sign In →</button>
+            </form>
+            <p class="text-center mt-20">
+                Don't have an account? <a href="signup.html" class="link-button">Create one free →</a>
+            </p>
+            <hr class="divider" style="margin:20px 0;">
+            <p class="text-center" style="font-size:0.85rem;color:var(--text-muted);">
+                By signing in you agree to our <a href="#" class="link-button" style="font-size:0.85rem;">Terms</a> and <a href="#" class="link-button" style="font-size:0.85rem;">Privacy Policy</a>.
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div>
+                <h2>🎨 My Art <span>Exhibition</span></h2>
+                <p>Connecting people through the universal language of art since 2026.</p>
+            </div>
+            <div>
+                <h3>Quick Links</h3>
+                <a href="home.html">Home</a>
+                <a href="exhibits.html">Gallery</a>
+                <a href="signup.html">Register</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div>
+                <h3>Contact Info</h3>
+                <p>📍 123 Gallery Lane, Art City</p>
+                <p>✉️ info@myartexhibition.com</p>
+                <p>📞 +1 234 567 8900</p>
+            </div>
+        </div>
+        <hr class="footer-divider">
+        <div class="footer-bottom">
+            <span>© 2026 My Art Exhibition. All Rights Reserved.</span>
+        </div>
+    </footer>
+
+    <div id="toast-notification" class="toast"></div>
+    <script src="../jsFile/jsFunctions.js"></script>
+</body>
+</html>

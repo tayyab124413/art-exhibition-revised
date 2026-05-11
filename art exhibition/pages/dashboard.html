@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Admin Dashboard – manage artworks, artists, orders and view exhibition statistics.">
+    <title>Admin Dashboard – My Art Exhibition</title>
+    <link rel="stylesheet" href="../cssFile/globalStyles.css">
+</head>
+<body>
+
+    <nav>
+        <a href="home.html" class="nav-brand">🎨 My Art <span>Exhibition</span></a>
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
+        <ul id="nav-menu">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="exhibits.html">Gallery</a></li>
+            <li><a href="artists.html">Artists</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="dashboard.html" class="active">Dashboard</a></li>
+            <li><a href="cart.html">🛒 Cart <span class="cart-count" id="cart-count">0</span></a></li>
+            <li class="dropdown">
+                <a href="#">Account ▾</a>
+                <div class="dropdown-menu">
+                    <a href="login.html">🔑 Login</a>
+                    <a href="signup.html">✨ Register</a>
+                </div>
+            </li>
+            <li><button id="dark-mode-toggle" class="nav-btn-login" style="font-size:1.1rem;padding:7px 12px;" title="Toggle dark mode">🌙</button></li>
+        </ul>
+    </nav>
+
+    <div class="page fade-in">
+
+        <div class="flex-between mb-30">
+            <div>
+                <h1>Admin Dashboard</h1>
+                <p style="margin:0;">Welcome back! Here's your exhibition overview.</p>
+            </div>
+            <div class="flex-center">
+                <button class="sm-button accent-button" id="btn-add-artwork">+ Add Artwork</button>
+                <button class="sm-button border-button" onclick="window.location.href='exhibits.html'">View Gallery</button>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-grid fade-in-2">
+            <div class="stat-card">
+                <div class="stat-icon">🖼️</div>
+                <div><span class="stat-label">Total Artworks</span><span class="stat-value counter-value" data-target="48">0</span></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🎨</div>
+                <div><span class="stat-label">Artists</span><span class="stat-value counter-value" data-target="12">0</span></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">👥</div>
+                <div><span class="stat-label">Visitors This Month</span><span class="stat-value counter-value" data-target="1840">0</span></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">📦</div>
+                <div><span class="stat-label">Pending Orders</span><span class="stat-value counter-value" data-target="7">0</span></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">💰</div>
+                <div><span class="stat-label">Revenue ($)</span><span class="stat-value counter-value" data-target="24600">0</span></div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="dash-section fade-in-3">
+            <h2 class="section-title">Quick Actions</h2>
+            <div class="action-grid">
+                <button class="action-btn" id="btn-add-artwork">
+                    <div class="action-btn-icon">➕</div>Add Artwork
+                </button>
+                <button class="action-btn" onclick="window.location.href='exhibits.html'">
+                    <div class="action-btn-icon">🖼️</div>View All Artworks
+                </button>
+                <button class="action-btn" onclick="openModal('modal-update-artwork')">
+                    <div class="action-btn-icon">✏️</div>Update Artwork
+                </button>
+                <button class="action-btn" onclick="window.location.href='artists.html'">
+                    <div class="action-btn-icon">🎨</div>Manage Artists
+                </button>
+                <button class="action-btn" onclick="window.location.href='contact.html'">
+                    <div class="action-btn-icon">📩</div>Messages
+                </button>
+                <button class="action-btn" onclick="openModal('modal-orders')">
+                    <div class="action-btn-icon">📦</div>Orders / Bookings
+                </button>
+                <button class="action-btn" onclick="openModal('modal-stats')">
+                    <div class="action-btn-icon">📊</div>User Statistics
+                </button>
+                <button class="action-btn" onclick="window.location.href='login.html'">
+                    <div class="action-btn-icon">🔒</div>Logout
+                </button>
+            </div>
+        </div>
+
+        <!-- Chart -->
+        <div class="dash-section">
+            <h2 class="section-title">Weekly Visitor Trend</h2>
+            <div class="chart-wrapper">
+                <canvas id="visits-chart" width="780" height="300"></canvas>
+            </div>
+        </div>
+
+        <!-- Artwork Table -->
+        <div class="dash-section">
+            <div class="flex-between mb-16">
+                <h2 class="section-title">Artwork Inventory</h2>
+                <input type="text" placeholder="🔍 Search artworks…" style="max-width:240px;padding:8px 14px;font-size:0.9rem;" oninput="filterTable(this.value)">
+            </div>
+            <div class="table-container">
+                <table class="data-table" id="artworks-table">
+                    <thead>
+                        <tr>
+                            <th class="col-id">ID</th>
+                            <th class="col-name">Artwork Name</th>
+                            <th class="col-artist">Artist</th>
+                            <th class="col-year">Year</th>
+                            <th class="col-status">Status</th>
+                            <th class="col-actions">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td><td class="artwork-name">Abstract Thoughts</td><td>Jane Doe</td><td>2024</td>
+                            <td><span class="badge badge-success">On Display</span></td>
+                            <td class="table-actions">
+                                <button class="tiny-button accent-button" onclick="openModal('modal-update-artwork')">Edit</button>
+                                <button class="tiny-button danger-button btn-delete-artwork">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td><td class="artwork-name">Classic Realism Portrait</td><td>John Smith</td><td>1802</td>
+                            <td><span class="badge badge-muted">Archived</span></td>
+                            <td class="table-actions">
+                                <button class="tiny-button accent-button" onclick="openModal('modal-update-artwork')">Edit</button>
+                                <button class="tiny-button danger-button btn-delete-artwork">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td><td class="artwork-name">Modern Bronze Sculpture</td><td>Alan Wake</td><td>2019</td>
+                            <td><span class="badge badge-success">On Display</span></td>
+                            <td class="table-actions">
+                                <button class="tiny-button accent-button" onclick="openModal('modal-update-artwork')">Edit</button>
+                                <button class="tiny-button danger-button btn-delete-artwork">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td><td class="artwork-name">The Persistence of Memory</td><td>Salvador Dali</td><td>1931</td>
+                            <td><span class="badge badge-info">Loaned</span></td>
+                            <td class="table-actions">
+                                <button class="tiny-button accent-button" onclick="openModal('modal-update-artwork')">Edit</button>
+                                <button class="tiny-button danger-button btn-delete-artwork">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5</td><td class="artwork-name">Starry Night Replica</td><td>Vincent V.</td><td>1889</td>
+                            <td><span class="badge badge-warning">Restoration</span></td>
+                            <td class="table-actions">
+                                <button class="tiny-button accent-button" onclick="openModal('modal-update-artwork')">Edit</button>
+                                <button class="tiny-button danger-button btn-delete-artwork">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>6</td><td class="artwork-name">Waterlilies Series</td><td>Claude M.</td><td>1906</td>
+                            <td><span class="badge badge-success">On Display</span></td>
+                            <td class="table-actions">
+                                <button class="tiny-button accent-button" onclick="openModal('modal-update-artwork')">Edit</button>
+                                <button class="tiny-button danger-button btn-delete-artwork">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Activity Log -->
+        <div class="dash-section">
+            <h2 class="section-title">Recent Activity</h2>
+            <div class="table-container">
+                <table>
+                    <thead><tr><th>Time</th><th>Action</th><th>User</th><th>Details</th></tr></thead>
+                    <tbody>
+                        <tr><td>Today 09:32</td><td><span class="badge badge-success">Added</span></td><td>Admin</td><td>New artwork "Waterlilies Series" added</td></tr>
+                        <tr><td>Today 08:14</td><td><span class="badge badge-info">Updated</span></td><td>Admin</td><td>Status of "Starry Night Replica" → Restoration</td></tr>
+                        <tr><td>Yesterday 17:45</td><td><span class="badge badge-warning">Loaned</span></td><td>Admin</td><td>"Persistence of Memory" loaned to City Museum</td></tr>
+                        <tr><td>Yesterday 12:00</td><td><span class="badge badge-muted">Archived</span></td><td>Admin</td><td>"Classic Realism Portrait" archived</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADD ARTWORK MODAL -->
+    <div class="modal-overlay" id="modal-add-artwork">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('modal-add-artwork')">✕</button>
+            <h2 style="margin-bottom:6px;">Add New Artwork</h2>
+            <p>Fill in the details to add a new piece to the collection.</p>
+            <form onsubmit="handleAddArtwork(event)">
+                <div><label for="art-name">Artwork Name</label><input type="text" id="art-name" placeholder="e.g. Starry Night" required></div>
+                <div><label for="art-artist">Artist</label><input type="text" id="art-artist" placeholder="e.g. Vincent van Gogh" required></div>
+                <div><label for="art-year">Year Created</label><input type="number" id="art-year" placeholder="e.g. 1889" min="1" max="2099" required></div>
+                <div><label for="art-price">Price ($)</label><input type="number" id="art-price" placeholder="e.g. 1500" min="0" required></div>
+                <div>
+                    <label for="art-status">Status</label>
+                    <div class="select-container">
+                        <select id="art-status">
+                            <option>On Display</option><option>Archived</option><option>Loaned</option><option>Restoration</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="lg-button accent-button" style="width:100%;">Add to Collection</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- UPDATE ARTWORK MODAL -->
+    <div class="modal-overlay" id="modal-update-artwork">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('modal-update-artwork')">✕</button>
+            <h2 style="margin-bottom:6px;">Update Artwork</h2>
+            <p>Modify the details of the selected artwork.</p>
+            <form onsubmit="event.preventDefault();closeModal('modal-update-artwork');showToast('✓ Artwork updated successfully!');">
+                <div><label>Artwork Name</label><input type="text" placeholder="Artwork Name" value="Abstract Thoughts"></div>
+                <div><label>Artist</label><input type="text" placeholder="Artist Name" value="Jane Doe"></div>
+                <div><label>Year</label><input type="number" placeholder="Year" value="2024"></div>
+                <div>
+                    <label>Status</label>
+                    <div class="select-container">
+                        <select><option selected>On Display</option><option>Archived</option><option>Loaned</option><option>Restoration</option></select>
+                    </div>
+                </div>
+                <button type="submit" class="lg-button accent-button" style="width:100%;">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ORDERS MODAL -->
+    <div class="modal-overlay" id="modal-orders">
+        <div class="modal-box" style="max-width:680px;">
+            <button class="modal-close" onclick="closeModal('modal-orders')">✕</button>
+            <h2 style="margin-bottom:20px;">Orders &amp; Bookings</h2>
+            <div class="table-container">
+                <table>
+                    <thead><tr><th>Order #</th><th>Customer</th><th>Artwork</th><th>Amount</th><th>Status</th></tr></thead>
+                    <tbody>
+                        <tr><td>#1001</td><td>Alice Johnson</td><td>Abstract Thoughts</td><td>$1,200</td><td><span class="badge badge-success">Paid</span></td></tr>
+                        <tr><td>#1002</td><td>Bob Martin</td><td>Classic Realism</td><td>$3,500</td><td><span class="badge badge-warning">Pending</span></td></tr>
+                        <tr><td>#1003</td><td>Carol Lee</td><td>Waterlilies Series</td><td>$2,800</td><td><span class="badge badge-info">Processing</span></td></tr>
+                        <tr><td>#1004</td><td>David Kim</td><td>Color Symphony</td><td>$900</td><td><span class="badge badge-success">Paid</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- USER STATS MODAL -->
+    <div class="modal-overlay" id="modal-stats">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('modal-stats')">✕</button>
+            <h2 style="margin-bottom:20px;">User Statistics</h2>
+            <div class="stats-grid" style="margin-bottom:0;">
+                <div class="stat-card"><div class="stat-icon">👤</div><div><span class="stat-label">Registered Users</span><span class="stat-value">284</span></div></div>
+                <div class="stat-card"><div class="stat-icon">🛒</div><div><span class="stat-label">Total Orders</span><span class="stat-value">57</span></div></div>
+                <div class="stat-card"><div class="stat-icon">⭐</div><div><span class="stat-label">Avg. Rating</span><span class="stat-value">4.8</span></div></div>
+                <div class="stat-card"><div class="stat-icon">🔄</div><div><span class="stat-label">Return Visitors</span><span class="stat-value">68%</span></div></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div>
+                <h2>🎨 My Art <span>Exhibition</span></h2>
+                <p>Admin portal for managing your art exhibition.</p>
+            </div>
+            <div>
+                <h3>Quick Links</h3>
+                <a href="home.html">Home</a>
+                <a href="exhibits.html">Gallery</a>
+                <a href="artists.html">Artists</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div>
+                <h3>Contact Info</h3>
+                <p>📍 123 Gallery Lane, Art City</p>
+                <p>✉️ info@myartexhibition.com</p>
+            </div>
+        </div>
+        <hr class="footer-divider">
+        <div class="footer-bottom">
+            <span>© 2026 My Art Exhibition. All Rights Reserved.</span>
+            <span>Admin Dashboard v3.0</span>
+        </div>
+    </footer>
+
+    <div id="toast-notification" class="toast"></div>
+    <script src="../jsFile/jsFunctions.js"></script>
+</body>
+</html>
