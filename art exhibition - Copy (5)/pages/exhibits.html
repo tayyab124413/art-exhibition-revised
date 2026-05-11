@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gallery – Browse and purchase curated artworks at My Art Exhibition.">
+    <title>Gallery – My Art Exhibition</title>
+    <link rel="stylesheet" href="../cssFile/globalStyles.css">
+</head>
+<body>
+
+    <nav>
+        <a href="home.html" class="nav-brand">🎨 My Art <span>Exhibition</span></a>
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
+        <ul id="nav-menu">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="exhibits.html" class="active">Gallery</a></li>
+            <li><a href="artists.html">Artists</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="cart.html">🛒 Cart <span class="cart-count" id="cart-count">0</span></a></li>
+            <li class="dropdown">
+                <a href="#">Account ▾</a>
+                <div class="dropdown-menu">
+                    <a href="login.html">🔑 Login</a>
+                    <a href="signup.html">✨ Register</a>
+                </div>
+            </li>
+            <li><button id="dark-mode-toggle" class="nav-btn-login" style="font-size:1.1rem;padding:7px 12px;" title="Toggle dark mode">🌙</button></li>
+        </ul>
+    </nav>
+
+    <div class="page fade-in">
+        <div class="hero-section">
+            <div class="hero-badge">✦ Curated Collection</div>
+            <h1>Our <span>Gallery</span></h1>
+            <p>Explore our finest selections of art — from classic masterpieces to contemporary works. Click "Add to Cart" to acquire a piece.</p>
+        </div>
+
+        <div class="flex-between mb-30">
+            <h2 class="section-title">All Artworks</h2>
+            <div class="flex-center" style="gap:10px;flex-wrap:wrap;">
+                <button class="sm-button accent-button filter-btn" onclick="filterGallery('all',this)">All</button>
+                <button class="sm-button border-button filter-btn" onclick="filterGallery('abstract',this)">Abstract</button>
+                <button class="sm-button border-button filter-btn" onclick="filterGallery('classic',this)">Classic</button>
+                <button class="sm-button border-button filter-btn" onclick="filterGallery('sculpture',this)">Sculpture</button>
+                <button class="sm-button border-button filter-btn" onclick="filterGallery('landscape',this)">Landscape</button>
+            </div>
+        </div>
+
+        <div class="card-container" id="gallery-grid">
+
+            <div class="card gallery-card fade-in" data-category="abstract">
+                <img src="../sources/image1.png" alt="Abstract Thoughts">
+                <h3>Abstract Thoughts</h3>
+                <p>Jane Doe · 2024 · Abstract</p>
+                <div style="padding:0 18px 14px;display:flex;justify-content:space-between;align-items:center;">
+                    <strong style="color:var(--brand-accent);font-size:1.1rem;">$1,200</strong>
+                    <button class="sm-button accent-button" onclick="addToCart('art1','Abstract Thoughts',1200,'../sources/image1.png')">🛒 Add to Cart</button>
+                </div>
+                <a href="#">View Details →</a>
+            </div>
+
+            <div class="card gallery-card fade-in-2" data-category="classic">
+                <img src="../sources/image2.png" alt="Classic Realism">
+                <h3>Classic Realism Portrait</h3>
+                <p>John Smith · 1802 · Classic</p>
+                <div style="padding:0 18px 14px;display:flex;justify-content:space-between;align-items:center;">
+                    <strong style="color:var(--brand-accent);font-size:1.1rem;">$3,500</strong>
+                    <button class="sm-button accent-button" onclick="addToCart('art2','Classic Realism Portrait',3500,'../sources/image2.png')">🛒 Add to Cart</button>
+                </div>
+                <a href="#">View Details →</a>
+            </div>
+
+            <div class="card gallery-card fade-in-3" data-category="sculpture">
+                <img src="../sources/exhibit_hall.png" alt="Modern Sculpture">
+                <h3>Modern Bronze Sculpture</h3>
+                <p>Alan Wake · 2019 · Sculpture</p>
+                <div style="padding:0 18px 14px;display:flex;justify-content:space-between;align-items:center;">
+                    <strong style="color:var(--brand-accent);font-size:1.1rem;">$5,800</strong>
+                    <button class="sm-button accent-button" onclick="addToCart('art3','Modern Bronze Sculpture',5800,'../sources/exhibit_hall.png')">🛒 Add to Cart</button>
+                </div>
+                <a href="#">View Details →</a>
+            </div>
+
+            <div class="card gallery-card fade-in" data-category="landscape">
+                <img src="../sources/exhibit_hall.png" alt="Grand Hall">
+                <h3>Grand Hall Exhibition</h3>
+                <p>Maria Chen · 2023 · Landscape</p>
+                <div style="padding:0 18px 14px;display:flex;justify-content:space-between;align-items:center;">
+                    <strong style="color:var(--brand-accent);font-size:1.1rem;">$2,100</strong>
+                    <button class="sm-button accent-button" onclick="addToCart('art4','Grand Hall Exhibition',2100,'../sources/exhibit_hall.png')">🛒 Add to Cart</button>
+                </div>
+                <a href="#">View Details →</a>
+            </div>
+
+            <div class="card gallery-card fade-in-2" data-category="abstract">
+                <img src="../sources/image1.png" alt="Color Symphony">
+                <h3>Color Symphony</h3>
+                <p>Sophia R. · 2022 · Abstract</p>
+                <div style="padding:0 18px 14px;display:flex;justify-content:space-between;align-items:center;">
+                    <strong style="color:var(--brand-accent);font-size:1.1rem;">$900</strong>
+                    <button class="sm-button accent-button" onclick="addToCart('art5','Color Symphony',900,'../sources/image1.png')">🛒 Add to Cart</button>
+                </div>
+                <a href="#">View Details →</a>
+            </div>
+
+            <div class="card gallery-card fade-in-3" data-category="classic">
+                <img src="../sources/image2.png" alt="Renaissance Echoes">
+                <h3>Renaissance Echoes</h3>
+                <p>Leo Fontaine · 1920 · Classic</p>
+                <div style="padding:0 18px 14px;display:flex;justify-content:space-between;align-items:center;">
+                    <strong style="color:var(--brand-accent);font-size:1.1rem;">$4,200</strong>
+                    <button class="sm-button accent-button" onclick="addToCart('art6','Renaissance Echoes',4200,'../sources/image2.png')">🛒 Add to Cart</button>
+                </div>
+                <a href="#">View Details →</a>
+            </div>
+
+        </div>
+
+        <div class="text-center mt-20">
+            <button class="lg-button accent-button" onclick="window.location.href='cart.html'">🛒 View My Cart</button>
+            <button class="lg-button border-button" onclick="window.location.href='dashboard.html'" style="margin-left:12px;">📊 Manage Collection</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div>
+                <h2>🎨 My Art <span>Exhibition</span></h2>
+                <p>Connecting people through the universal language of art since 2026.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">f</a>
+                    <a href="#" class="social-link">𝕏</a>
+                    <a href="#" class="social-link">in</a>
+                    <a href="#" class="social-link">▶</a>
+                </div>
+            </div>
+            <div>
+                <h3>Explore</h3>
+                <a href="home.html">Home</a>
+                <a href="exhibits.html">Gallery</a>
+                <a href="artists.html">Artists</a>
+                <a href="about.html">About Us</a>
+            </div>
+            <div>
+                <h3>Account</h3>
+                <a href="login.html">Login</a>
+                <a href="signup.html">Register</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div>
+                <h3>Contact Info</h3>
+                <p>📍 123 Gallery Lane, Art City</p>
+                <p>✉️ info@myartexhibition.com</p>
+                <p>📞 +1 234 567 8900</p>
+            </div>
+        </div>
+        <hr class="footer-divider">
+        <div class="footer-bottom">
+            <span>© 2026 My Art Exhibition. All Rights Reserved.</span>
+            <span>Designed with ❤️ for art lovers</span>
+        </div>
+    </footer>
+
+    <div id="toast-notification" class="toast"></div>
+    <script src="../jsFile/jsFunctions.js"></script>
+</body>
+</html>
